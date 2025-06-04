@@ -18,8 +18,7 @@ Yummy=inc.Yummy_Robot();
 % 可视化机器人
 figure;
 % 初始位置
-% init_angles=[0 pi/2 0 0 0 0];
-init_angles=[0 0.5891 1.8625 0 0 0];
+init_angles=[0 pi/2 0 0 0 0];
 
 Yummy.plot([0 pi/2 0 0 0 0]);
 

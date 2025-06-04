@@ -13,8 +13,11 @@ clear;clc;close all;
 % 格式化输出
 %% 机械臂正解算
 Yummy=inc.Yummy_Robot();
+import inc.yummy_fk;
+%% 
+init_angle=[0,pi/2,0,0,0,0];
+T06=yummy_fk(init_angle);
+disp(T06);
 
-T = Yummy.fkine([0,pi/2,0,0,0,0]);
-
-
+T = Yummy.fkine(init_angle);
 disp(T);

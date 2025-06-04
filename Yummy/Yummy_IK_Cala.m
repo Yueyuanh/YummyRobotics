@@ -100,17 +100,12 @@ T23=[c3,-s3,0,0.3;
       0,0,-1,-0.27;
       0,1,0,0;
       0,0,0,1];
-  
-% disp("...")
-% disp(T34);
-% disp(Yummy.A(4, q))
 
 T04=T01*T12*T23*T34;
 disp(T04)
 
-%%
+%% 求出相对于{4}的旋转矩阵
 T1=Tinv(T04)*T;
-% T1=T;
 disp("T04")
 disp(T04)
 
@@ -119,7 +114,6 @@ disp(T04)
 % disp("TT04")
 % disp(TT04)
 %%
-
 theta5=atan2(sqrt(T1(3,1)^2+T1(3,2)^2),T1(3,3));
 s5=sin(theta5);
 disp(theta5)
@@ -139,14 +133,9 @@ end
 
 
 
-
-
 %% 验证
 theta=[theta1,theta2,theta3,theta4,theta5,theta6];
-% disp(theta)
-
-
-
+disp(theta)
 
 Yummy.teach(theta)
 disp(theta)
