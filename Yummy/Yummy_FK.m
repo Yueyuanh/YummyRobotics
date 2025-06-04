@@ -16,4 +16,5 @@ Yummy=inc.Yummy_Robot();
 
 T = Yummy.fkine([0,pi/2,0,0,0,0]);
 
+
 disp(T);

@@ -2,8 +2,6 @@
 
 # Yummy Robot Development Notes
 
-
-
 ## 机械臂模型（MDH）
 
 | <img src="img/MDH.png" width="250"> | <img src="img/Yummy_joints.png" width="250"> |
@@ -13,12 +11,12 @@
 
 | $i$ | $\theta_i$ | $d_i(m)$ | $a_{i-1}(m)$ | $\alpha_{i-1}(rad)$ |
 | :---: | :--: | :--: | :--: | :------: |
-| 1 | $\theta_1$      | 0 | 0 | 0 |
+| 1 | $\theta_1$      | 0(0.11) | 0 | 0 |
 | 2 |$\theta_2$      | 0 | 0 | $\alpha_1=\pi/2$ |
 | 3 |$\theta_3$       | 0 | $a_2=$0.3 | 0 |
 | 4 |$\theta_4$      | 0.27 | $a_3=$0.096 | $\alpha_3=\pi/2$ |
 | 5 | $\theta_5$     | 0 | 0 | $\alpha_4=-\pi/2$ |
-| 6 | $\theta_6$      | 0.107 | 0 | $\alpha_5=\pi/2$ |
+| 6 | $\theta_6$      | 0(0.107) | 0 | $\alpha_5=\pi/2$ |
 
 ## 工作空间
 
@@ -366,6 +364,17 @@ $$
 &g_3=s_2s\alpha_1f_1+c_2s\alpha_1f_2-c\alpha_1f_3-d_2c\alpha_1 \\
 \end{alignat}
 $$
+$$
+\begin{alignat}{2}
+&g_1=c_2f_1-s_2f_2 \\
+&g_2=0 \\
+
+&g_3=s_2f_1+c_2f_2 \\
+\end{alignat}
+$$
+
+
+
 ​	其中值得注意的是$^0_1T$只有旋转矩阵部分，平移向量为0，因为按照MDH的坐标系建立方法两者坐标系在同一个点上。
 
 ​	现在写出$^0P_{4ORG}$绝对值平方的表达式，这里$r=x^2+y^2+z^2$：
@@ -376,7 +385,13 @@ $$
 $$
 r=f_1^2+f_2^2+f_3^2+a_1^2+d_2^2+2d_2f_3+2a_1(c_2f_1-s_2f_2)
 $$
-​	现在，写出Z方向的分量，可化为以下两个方程：
+$$
+r=f_1^2+f_2^2
+$$
+
+
+
+现在，写出Z方向的分量，可化为以下两个方程：
 $$
 r=(k_1c_2+k_2s_2)2a_1+k_3 \\
 z=(k_1s_2-k_2c_2)s\alpha_1+k_4 \tag{2}
@@ -422,9 +437,9 @@ $$
 
 按照ZYZ的旋转顺序，分别定义：
 $$
-\alpha=\theta_1 \\
-\beta=\theta_2 \\
-\gamma=\theta_3
+\alpha=\theta_4 \\
+\beta=\theta_5 \\
+\gamma=\theta_6
 $$
 可得到其旋转矩阵：
 

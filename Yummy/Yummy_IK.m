@@ -11,14 +11,33 @@
 clear;clc;close all;    
 %% 加载机器人
 Yummy = inc.Yummy_Robot();
-
+import inc.yummy_ik;
 %%
-% 定义目标位姿（齐次变换矩阵）
-T = transl(0.5, 0.1, 0.2) * trotx(pi);
+p=[0.2;0.1;0.3];
+T_rot = trotx(0)*troty(90)*trotz(180);  
+R = T_rot(1:3, 1:3); 
+T = [R, p; 0 0 0 1];
+%%
 
-disp(T)
-% 计算逆运动学解
-q = Yummy.ikine(T);
-disp(q)
+for i =-0.3:0.01:0.3
+    
+    T(1,4)=i;
+    theta=yummy_ik(T);
+    Yummy.plot(theta);
+%     Yummy.teach(theta)
+end
+for i =0.3:-0.01:-0.2
+    T(3,4)=i;
+    theta=yummy_ik(T);
+    Yummy.plot(theta);
+%     Yummy.teach(theta)
+end
+for i =0.1:-0.01:-0.4
+    T(2,4)=i;
+    theta=yummy_ik(T);
+    Yummy.plot(theta);
+%     Yummy.teach(theta)
+end
+
+
 % Yummy.teach(init_angles)
-% Yummy.teach(q)
