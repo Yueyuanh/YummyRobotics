@@ -11,3 +11,7 @@
 ![](docs/img/cond2.gif)
 
 ![](docs/img/cond.gif)
+
+# 特别感谢
+
+- 感谢李金珈同学在结构设计上的帮助
